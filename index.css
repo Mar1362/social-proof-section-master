@@ -1,0 +1,185 @@
+:root{
+  --very-dark-magenta: hsl(300, 43%, 22%) ;
+  --soft-pink: hsl(333, 80%, 67%) ; 
+  --dark-grayish-magenta: hsl(303, 10%, 53%) ;
+  --light-grayish-magenta: hsl(300, 24%, 96%) ;
+  --white: hsl(0, 0%, 100%) ;
+
+  font-size: 15px;
+}
+*, *::after, *::before{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{background: url(images/bg-pattern-top-mobile.svg) no-repeat, url(images/bg-pattern-bottom-desktop.svg) no-repeat top 10% right, var(--white);}
+main{
+  width: 90%;
+  margin: auto;
+}
+.heading{
+  color: var(--very-dark-magenta);
+  font-family: "League Spartan", cursive;
+  font-size: xx-large;
+  font-weight: 700;
+  width: 80%;
+  margin: 8% auto 0 auto;
+  text-align: center;
+}
+.paragraph{
+  color: var(--dark-grayish-magenta);
+  font-family: 'League Spartan', auto;
+  font-weight: 400;
+  font-size: large;
+  line-height: 1.3em;
+  text-align: center;
+  margin: 5% auto 0 auto;
+}
+.rates{
+  list-style: none;
+  margin-top: 10%;
+}
+.rates li{
+  text-align: center;
+  color: var(--very-dark-magenta);
+  font-size: large;
+  font-family: 'League Spartan', auto;
+  font-weight: bold;
+  padding: 10% 0 3% 0;
+  width: 95%;
+  margin: 3% auto 0 auto;
+  border-radius: 10px;
+  background: url(images/icon-star.svg) no-repeat 35% 25%,
+              url(images/icon-star.svg) no-repeat 42% 25%,
+              url(images/icon-star.svg) no-repeat 49% 25%,
+              url(images/icon-star.svg) no-repeat 56% 25%,
+              url(images/icon-star.svg) no-repeat 63% 25%,
+              var(--light-grayish-magenta);
+}
+.comment:first-of-type{margin-top: 11%;}
+.comment{
+  background-color: var(--very-dark-magenta);
+  margin-top: 3%;
+  padding: 10%;
+  border-radius: 10px;
+}
+.comment figure, .comment p:first-of-type{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8%;
+}
+.comment figure{width: 15%;}
+.comment figure img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.comment p{
+  color: var(--white);
+  font-family: 'League Spartan', auto;
+  font-weight: 400;
+  word-spacing: .2em;
+  letter-spacing: .08em;
+  font-size: large;
+}
+.comment p:first-of-type em{
+  color: var(--soft-pink);
+  font-size: medium;
+  font-style: normal;
+}
+.comment p:last-of-type{margin-top: 8%;}
+.attribution{
+  margin-top: 3%;
+  color: var(--soft-pink);
+  font-size: 1em !important;
+  padding: 2%;
+}
+
+
+@media only screen and (min-width: 760px){
+  main{
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 2%;
+    justify-content: center;
+  }
+  .topper:first-of-type{width: 45%;}
+  .rates{
+    flex-grow: 1;
+    flex-basis: 53%;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-end;
+  }
+  .heading, .paragraph{
+    text-align: left;
+    margin: 0;
+    padding-right: 10%;
+    width: 100%;
+  }
+  .heading{font-size: 3rem;}
+  .paragraph{margin-top: 5%;}
+  .rates li{
+    margin: 3% 0;
+    padding: 3%;
+    text-align: right;
+    font-size: medium;
+    background: url(images/icon-star.svg) no-repeat 5% 50%,
+                url(images/icon-star.svg) no-repeat 10% 50%,
+                url(images/icon-star.svg) no-repeat 15% 50%,
+                url(images/icon-star.svg) no-repeat 20% 50%,
+                url(images/icon-star.svg) no-repeat 25% 50%,
+                var(--light-grayish-magenta);
+    width: 90%;
+    box-shadow: 0px 0px 5px rgba(255, 166, 0, 0.326);
+  }
+  .rates li:nth-of-type(2){
+    margin-top: 0%;
+    margin-left: 8%;
+  }
+  .rates li:nth-of-type(3){
+    margin-top: 0;
+    margin-left: 16%;
+  }
+  .comment{
+    margin-top: 0;
+    flex-basis: 32%;
+    box-sizing: border-box;
+    padding: 4%;
+    align-self: center;
+    flex-grow: 1;
+  }
+  .comment:hover{box-shadow: 10px 10px 20px var(--soft-pink);}
+  .rates li:hover{box-shadow: 5px 5px 10px orange;}
+  .comment:nth-of-type(1){
+    margin-top: 5%;
+  }
+  .comment:nth-of-type(2){
+    margin-top: 7%;
+  }
+  .comment:nth-of-type(3){
+    margin-top: 10%;
+  }
+  /* Let's talk about animation for pc view :) 
+    this was just for fun give me your feedback
+    and suggestion. Thanks!
+  */
+
+@keyframes floating-rates{
+  50%{transform: translateX(2%);}
+  100%{transform: translateX(-2%);}
+}
+@keyframes floating-comment{
+  50%{transform: translateY(2%);}
+  100%{transform: translateY(-2%);}
+}
+.rates li{  animation: floating-rates 5s linear alternate-reverse infinite;}
+.rates li:nth-child(2){animation-delay: .3s;}
+.rates li:last-child{animation-delay: .5s;}
+.comment{animation: floating-comment 5s alternate-reverse infinite linear;}
+.comment:nth-of-type(2){animation-delay: 1s;}
+.comment:last-of-type{animation-delay: 2s;}
+}
